@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
       return;
     }
     const data = {
-      title: form.value.title,
+      title: form.value.name,
       description: form.value.description,
     };
     this.booksService.create(data).subscribe({
