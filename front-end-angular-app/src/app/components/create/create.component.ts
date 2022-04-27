@@ -1,56 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from 'src/app/services/books.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
-
-  book = {
-    title: '',
-    description: ''
-  };
+  myForm!: FormGroup;
   isBookAdded = false;
+  submitted = false;
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService, private fb: FormBuilder) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.myForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+  get f() {
+    return this.myForm.controls;
+  }
 
-  // Add New
-  addBook(): void {
-    const data = {
-      title: this.book.title,
-      description: this.book.description
-    };
-    if (!data.title) {
-      alert('Please add title!');
+  onSubmit(form: FormGroup) {
+    console.log('Valid?', form.valid, form.value); // true or false
+    this.submitted = true;
+    if (form.invalid) {
       return;
     }
-
-    this.booksService.create(data)
-    .subscribe({
+    const data = {
+      title: form.value.title,
+      description: form.value.description,
+    };
+    this.booksService.create(data).subscribe({
       next: (response) => {
         console.log(response);
         this.isBookAdded = true;
       },
-      error: error => {
+      error: (error) => {
         console.log(error);
       },
-      complete: () => console.info('complete')
+      complete: () => console.info('complete'),
     });
-     
   }
-  
 
-  // Reset on adding new
+  onReset(): void {
+    this.submitted = false;
+    this.myForm.reset();
+  }
+
+
   newBook(): void {
     this.isBookAdded = false;
-    this.book = {
-      title: '',
-      description: ''
-    };
+    this.submitted = false;
+    this.myForm.reset();
   }
-
 }

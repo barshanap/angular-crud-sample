@@ -8,6 +8,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { ListComponent } from './components/list/list.component';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -25,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule, MatSnackBarModule
+    BrowserAnimationsModule, MatSnackBarModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,49 @@
-<div style="width: 500px; margin: auto;">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <div style="width: 500px; margin: auto">
     <div class="submit-form">
       <div *ngIf="!isBookAdded">
         <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" required [(ngModel)]="book.title" name="name" />
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control"
+            placeholder="Enter Book title"
+          />
+          <div *ngIf="submitted && f.name.invalid" class="alert alert-danger">
+            <div *ngIf="f.name.errors && f.name.errors.required">
+              Book title is required.
+            </div>
+          </div>
         </div>
-  
+
         <div class="form-group">
-          <label for="description">Descriptions</label>
-          <input class="form-control" id="description" required [(ngModel)]="book.description" name="description" />
+          <label for="description">Description</label>
+          <input
+            class="form-control"
+            formControlName="description"
+            placeholder="Enter description"
+          />
+          <div
+            *ngIf="submitted && f.description.invalid"
+            class="alert alert-danger"
+          >
+            <div *ngIf="f.description.errors && f.description.errors.required">
+              description is required.
+            </div>
+          </div>
         </div>
-  
-        <button (click)="addBook()" class="btn btn-success">Create</button>
+
+        <button type="submit" class="btn btn-success">Create</button>
+        <button type="button" (click)="onReset()" class="btn btn-danger">
+          Reset
+        </button>
       </div>
-  
+
       <div *ngIf="isBookAdded">
         <h3>New book added!</h3>
-        <button class="btn btn-success" (click)="newBook()"> + Add More</button>
+        <button class="btn btn-success" (click)="newBook()">+ Add More</button>
       </div>
     </div>
   </div>
+</form>
