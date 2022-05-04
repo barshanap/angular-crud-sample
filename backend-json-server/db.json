@@ -1,4 +1,42 @@
 {
+  "productList": [
+    {
+      "productName": "dfdf",
+      "category": "electronic",
+      "freshness": "Brand New",
+      "price": 21,
+      "comment": "sqs",
+      "date": "2022-04-27T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "productName": "eqwre",
+      "category": "electronic",
+      "freshness": "Brand New",
+      "price": 33,
+      "comment": "tr",
+      "date": "2022-05-18T18:30:00.000Z",
+      "id": 3
+    },
+    {
+      "productName": "rtrt",
+      "category": "electronic",
+      "freshness": "Brand New",
+      "price": 3,
+      "comment": "ddd",
+      "date": "2022-05-26T18:30:00.000Z",
+      "id": 4
+    },
+    {
+      "productName": "efeE",
+      "category": "electronic",
+      "freshness": "Second Hand",
+      "price": 32,
+      "comment": "DF",
+      "date": "2022-05-16T18:30:00.000Z",
+      "id": 5
+    }
+  ],
   "books": [
     {
       "title": "teiouo",
